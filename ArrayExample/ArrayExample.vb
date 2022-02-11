@@ -4,10 +4,38 @@
         'SimpleArray()
         'TwoDimensionalArray()
         'ArrayBoundaries()
+        RandomArray()
 
         Console.Read()
     End Sub
+    Sub RandomArray()
+        Randomize()
 
+        Dim currentNumber As Integer
+        Dim numbers(7) As Integer
+
+        For i = 0 To 9999
+            currentNumber = GetRandomNumber()
+            numbers(currentNumber) += 1
+        Next
+
+        For i = 0 To 7
+            Console.Write(CStr(i).PadLeft(6) & " |")
+        Next
+
+        Console.WriteLine()
+        Console.WriteLine(StrDup(70, "-"))
+
+        For i = LBound(numbers) To UBound(numbers)
+            Console.Write(CStr(numbers(i)).PadLeft(6) & " |")
+        Next
+
+    End Sub
+
+    Function GetRandomNumber() As Integer
+        Dim value As Integer = CInt(Int((6 * Rnd()) + 1))
+        Return value
+    End Function
     Sub SimpleArray()
 
         Dim names(6) As String 'Declare an array of strings with 0 to 6 elements (7 slots)
